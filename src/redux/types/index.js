@@ -1,0 +1,2 @@
+export const SET_SELECTED_WORDS = "SET_SELECTED_WORDS"
+export const SET_WORD_LIST = "SET_WORD_LIST"
