@@ -35,7 +35,7 @@ export default function CategorySelection({category, getProductName, productName
             <ProductSelect productName={productName}/>
           </div>
 
-          <SelectedWords category={category} />
+          
           <CategoryWordsListContainer category={category} />
           
 

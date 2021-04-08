@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import {useSelector} from 'react-redux'
 
-export default function SelectedWords({categoryWordsList}) {
+export default function SelectedWords({getOnDoubleClick}) {
   const classes = useStyles();
   const { selectedWords } = useSelector((state)=> state)
 
@@ -13,7 +13,10 @@ export default function SelectedWords({categoryWordsList}) {
     <div className={classes.wordsItemsList}>
 		  {selectedWords.map((word) => 
         <div className={classes.wordsItem} key={word} >
-          <Button size="small" variant="contained">{word}</Button>
+          <Button size="small"
+           variant="contained"
+           onDoubleClick={ (e) => getOnDoubleClick(e.target.innerText)}
+           >{word}</Button>
         </div>)}
     </div>
     </Paper>

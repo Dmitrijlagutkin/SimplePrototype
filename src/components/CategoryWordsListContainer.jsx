@@ -4,29 +4,45 @@ import {setSelectedWords} from '../redux/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
 import {setWordList} from '../redux/actions/index'
+import SelectedWords from './SelectedWords'
 
 export default function CategoryWordsListContainer (category) {
 	const categoryWordsList = category.category.categoryWords
 	const {selectedWords} = useSelector((state)=> state)
+	console.log("selectedWords", selectedWords)
 
 	const dispatch = useDispatch()
 	const [targetWord, setTargetWord] = useState([])
 
-	// const [unTargetWord, setUnTargetWord] = useState([])
+
+
+
+	const [unTargetWord, setUnTargetWord] = useState([])
+
+
+	
 
 	const getOnClickTargetWord = (e) => {
 		const eIndex = categoryWordsList.indexOf(e.toLowerCase())
-		console.log("eIndex", eIndex)
-		console.log("indexOf(targetWord)", categoryWordsList.splice(eIndex, 1))
+		categoryWordsList.splice(eIndex, 1)
 		setTargetWord([...targetWord, e])
 	}
 
-	// const getOnDoubleClick = (e) => {
-	// 	const eIndex = selectedWords.indexOf(e.toLowerCase())
-	// 	console.log("eIndex", eIndex)
-	// 	console.log("indexOf(targetWord)", selectedWords.splice(eIndex, 1))
-	// 	setUnTargetWord([...unTargetWord, e])
-	// }
+
+
+
+
+
+	const getOnDoubleClick = (e) => {
+		const eIndex = selectedWords.indexOf(e.toLowerCase())
+		selectedWords.splice(eIndex, 1)
+		setUnTargetWord([...targetWord, e])
+	}
+
+
+
+
+
 
 	useEffect(() => {
 		dispatch(setWordList(categoryWordsList))
@@ -38,10 +54,19 @@ export default function CategoryWordsListContainer (category) {
 
 	
 
+	
+
 	return (
+		<div>
+		<SelectedWords 
+		getOnDoubleClick={getOnDoubleClick}/>
 		<CategoryWordsList categoryWordsList={categoryWordsList}
 		getOnClickTargetWord={getOnClickTargetWord}
 		targetWord={targetWord}
+
+		
 		/>
+		</div>
+		
 	)
 }
