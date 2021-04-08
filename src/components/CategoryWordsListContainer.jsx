@@ -9,45 +9,32 @@ import SelectedWords from './SelectedWords'
 export default function CategoryWordsListContainer (category) {
 	const categoryWordsList = category.category.categoryWords
 	const {selectedWords} = useSelector((state)=> state)
-	console.log("selectedWords", selectedWords)
+	const {wordList} = useSelector((state)=> state)
+	console.log("selectedWords", wordList)
 
 	const dispatch = useDispatch()
+
+	dispatch(setWordList(categoryWordsList))
+	
 	const [targetWord, setTargetWord] = useState([])
-
-
-
-
 	const [unTargetWord, setUnTargetWord] = useState([])
 
-
-	
-
 	const getOnClickTargetWord = (e) => {
-		const eIndex = categoryWordsList.indexOf(e.toLowerCase())
-		categoryWordsList.splice(eIndex, 1)
+		const eIndex = wordList.indexOf(e.toLowerCase())
+		console.log("wordlist.indexOf(e.toLowerCase())", wordList.indexOf(e.toLowerCase()))
+		wordList.splice(eIndex, 1)
 		setTargetWord([...targetWord, e])
 	}
-
-
-
-
-
 
 	const getOnDoubleClick = (e) => {
 		const eIndex = selectedWords.indexOf(e.toLowerCase())
 		selectedWords.splice(eIndex, 1)
 		setUnTargetWord([...targetWord, e])
+
 	}
 
-
-
-
-
-
-	useEffect(() => {
-		dispatch(setWordList(categoryWordsList))
-	}, [categoryWordsList]);
-
+		
+	
 	useEffect(()=>{
         dispatch(setSelectedWords(targetWord))
     }, [targetWord])
