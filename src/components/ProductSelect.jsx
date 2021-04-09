@@ -9,7 +9,7 @@ export default function ProductSelect({productName}) {
 
   return (
     <div >
-      <Button variant="contained" color="primary" size="small">
+      <Button variant="contained" color="primary" size="small" >
         {productName ? productName : "Select a product" }
       </Button>
     </div>

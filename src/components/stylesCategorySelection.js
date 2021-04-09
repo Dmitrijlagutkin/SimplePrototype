@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme)=>({
 		margin: '15px',
 	  },
 	  categoryTitle: {
-		  margin: '40px'
+		  margin: '25px'
 	  },
 	  productItemsList: {
 		  display: "flex",
@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme)=>({
 		  margin: "0 20px",
 	  },
 	  productImg: {
+		borderRadius: "50% 50%",
 		textAlign: "center",
 		margin: "20px auto",
+		width: "70px",
+    	height: "70px",	
 	  },
 	  selectProducts: {
 		display: "flex",
@@ -37,6 +40,12 @@ const useStyles = makeStyles((theme)=>({
 	  wordsItemsListBg: {
 		padding: "15px",
 		margin: "30px 0"
+	  },
+	  btnSeeResult: {
+		margin: "15px 0 30px 0",
+	  },
+	  link: {
+		margin: "30px 0",
 	  },
 }))
 
