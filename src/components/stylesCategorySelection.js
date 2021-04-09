@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme)=>({
 		justifyContent: "center",
 	  },
 	  wordsItem: {
-		  margin: "0 10px",
+		  margin: "10px 10px 0 10px",
 	  },
 	  wordsItemsListBg: {
 		padding: "15px",
@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme)=>({
 	  link: {
 		margin: "30px 0",
 	  },
+	//   closeIcon: {
+	// 	  marginTop: "5px",
+	//   },
 }))
 
 export default useStyles

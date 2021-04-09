@@ -13,6 +13,7 @@ export default function CategoryWordsListContainer ({category}) {
 	const dispatch = useDispatch()
 	const [targetWord, setTargetWord] = useState([])
 
+
 	useEffect(()=>{
         dispatch(setWordList(categoryWordsList))
     }, [])
@@ -24,11 +25,16 @@ export default function CategoryWordsListContainer ({category}) {
 	}
 
 	const getOnDoubleClick = (e) => {
-		console.log("e", e)
 		const eIndex = selectedWords.indexOf(e.toLowerCase())
 		selectedWords.splice(eIndex, 1)
 		wordList.splice(0, 0, e.toLowerCase())
 		dispatch(setWordList([...wordList]))
+	}
+
+	const onClickRemoveAllWords = () => {
+		setTargetWord([])
+		dispatch(setWordList([...wordList, ...selectedWords]))
+		dispatch(setSelectedWords([]))
 	}
 
 	useEffect(()=>{
@@ -40,6 +46,7 @@ export default function CategoryWordsListContainer ({category}) {
 		<SelectedWords 
 		getOnDoubleClick={getOnDoubleClick}
 		selectedWords={selectedWords}
+		onClickRemoveAllWords={onClickRemoveAllWords}
 		/>
 
 		<CategoryWordsList wordList={wordList}
